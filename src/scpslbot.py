@@ -14,7 +14,7 @@ class SCPBot(discord.Client):
         self.channel_id = channel_id
         self.prefix = prefix
 
-        self.activity = None
+        self.stored_activity = None
         self.counter = 0
         self.channel_name = None
         self.bot_member = None
@@ -31,7 +31,7 @@ class SCPBot(discord.Client):
             print("Fetching bot member...")
             guild = self.get_guild(self.server_id)
             self.bot_member = guild.get_member(self.user.id)
-        self.activity = self.bot_member.activity
+        self.stored_activity = self.bot_member.activity
 
     async def change_channel_name(self, name):
         if not self.channel:
@@ -41,16 +41,19 @@ class SCPBot(discord.Client):
 
     @tasks.loop(seconds=5)
     async def task_loop(self):
+        print("Checking bot presence...")
         await self.fetch_bot_presence()
+        print(self.prefix + self.stored_activity)
 
-        if self.activity:
+        if self.stored_activity:
             self.counter = 0
-            if (self.prefix + self.activity.name) != self.channel_name:
-                print(f"Changing channel name to {self.prefix + self.activity.name}")
-                self.channel_name = self.prefix + self.activity.name
-                await self.change_channel_name(self.prefix + self.activity.name)
+            if self.stored_activity.name != self.channel_name:
+                print(f"Changing channel name to {self.prefix + self.stored_activity.name}")
+                self.channel_name = self.stored_activity.name
+                await self.change_channel_name(self.prefix + self.stored_activity.name)
         else:
             self.counter += 1
+            print(self.counter)
             if self.counter >= 3:
                 if self.channel_name != "NaN":
                     print("Changing channel name to NaN")
