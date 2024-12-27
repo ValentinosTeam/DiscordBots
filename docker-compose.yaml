@@ -1,0 +1,15 @@
+services:
+  discord_bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dsbot
+    volumes:
+      - ./src:/app
+    environment:
+      - SCP_SL_EU_BOT_TOKEN=${SCP_SL_EU_BOT_TOKEN}
+      - SCP_SL_UK_BOT_TOKEN=${SCP_SL_UK_BOT_TOKEN}
+      - TEST_BOT_TOKEN=${TEST_BOT_TOKEN}
+    stdin_open: true
+    tty: true
+    restart: unless-stopped

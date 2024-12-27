@@ -1,5 +1,5 @@
 .venv/
-test.py
+src/test.py
 .env
 .idea/
 __pycache__/

@@ -62,13 +62,6 @@ class SCPBot(discord.Client):
         print("Waiting for bot to be ready...")
         await self.wait_until_ready()
 
-    async def on_message(self, message):
-        if message.author == self.user:
-            return
-        print(f'Message from {message.author}: {message.content}')
-        if message.content.startswith('!status '):
-            await self.change_presence(activity=discord.Game(name=message.content[8:]))
-
 if __name__ == "__main__":
     import os
     from dotenv import load_dotenv
