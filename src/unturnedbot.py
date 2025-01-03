@@ -1,5 +1,5 @@
 import requests
-from pprint import pprint
+from datetime import datetime
 import discord
 from discord.ext import tasks
 
@@ -18,8 +18,10 @@ class UnturnedBot(discord.Client):
         if not self.task_loop.is_running():
             self.task_loop.start()
 
-    @tasks.loop(minutes=3)
+    @tasks.loop(minutes=1)
     async def task_loop(self):
+        current_time = datetime.now().strftime("%H:%M:%S")
+        print(f"{current_time} - Fetching server data...")
         try:
             response = requests.get(self.api_url)
             response.raise_for_status()  # Raise an error for bad HTTP status codes
