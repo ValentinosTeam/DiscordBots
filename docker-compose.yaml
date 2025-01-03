@@ -9,7 +9,8 @@ services:
     environment:
       - SCP_SL_EU_BOT_TOKEN=${SCP_SL_EU_BOT_TOKEN}
       - SCP_SL_UK_BOT_TOKEN=${SCP_SL_UK_BOT_TOKEN}
-      - TEST_BOT_TOKEN=${TEST_BOT_TOKEN}
+      - UNTURNED_BOT_TOKEN=${UNTURNED_BOT_TOKEN}
+      - UNTURNED_API_TOKEN=${UNTURNED_API_TOKEN}
     stdin_open: true
     tty: true
     restart: unless-stopped
