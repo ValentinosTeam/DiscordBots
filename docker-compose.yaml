@@ -8,6 +8,7 @@ services:
       - ./src:/app
     environment:
       - SCP_SL_EU_BOT_TOKEN=${SCP_SL_EU_BOT_TOKEN}
+      - SCP_SL_EU_BOT_2_TOKEN=${SCP_SL_EU_BOT_2_TOKEN}
       - SCP_SL_UK_BOT_TOKEN=${SCP_SL_UK_BOT_TOKEN}
       - UNTURNED_BOT_TOKEN=${UNTURNED_BOT_TOKEN}
       - UNTURNED_API_TOKEN=${UNTURNED_API_TOKEN}
