@@ -14,12 +14,12 @@ class CleanupBot(discord.Client):
         formatted_time = current_time.strftime("%d/%m %H:%M:%S")
         print(f"{current_time} - Logged on as {self.user}")
 
-    async def on_disconnect():
+    async def on_disconnect(self):
         current_time = datetime.now().time()
         formatted_time = current_time.strftime("%d/%m %H:%M:%S")
         print(f"{current_time} - {self.user} disconnecting...")
 
-    async def on_close():
+    async def on_close(self):
         current_time = datetime.now().time()
         formatted_time = current_time.strftime("%d/%m %H:%M:%S")
         print(f"{current_time} - {self.user} shutting down...")
