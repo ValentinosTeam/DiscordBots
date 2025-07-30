@@ -31,5 +31,5 @@ if "__main__" == __name__:
     import os
     from dotenv import load_dotenv
     load_dotenv()
-    bot = ReactBot([1400059437867208815])
-    bot.run(os.getenv("REACT_BOT_TOKEN"))
+    bot = ReactBot([1400247426807496724])
+    bot.run(os.getenv("TEST_BOT_TOKEN"))
