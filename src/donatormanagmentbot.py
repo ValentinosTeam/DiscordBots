@@ -30,7 +30,6 @@ class DonatorManagmentBot(discord.Client):
 
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
-        print("test")
         self.guild = self.get_guild(self.server_id)
         role = self.guild.get_role(self.donation_role)
         for m in self.guild.members:
