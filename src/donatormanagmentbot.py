@@ -75,7 +75,7 @@ class DonatorManagmentBot(discord.Client):
         """
         channel = self.get_channel(self.admin_channel)
         for r in self.roles_to_ping:
-            message = f'<@&{r}>' + message
+            message = f'<@&{r}>, ' + message
         await channel.send(message)
 
     async def ping_channels(self, member_id: int):
