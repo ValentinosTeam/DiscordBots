@@ -12,17 +12,17 @@ class CleanupBot(discord.Client):
     async def on_ready(self):
         current_time = datetime.now().time()
         formatted_time = current_time.strftime("%d/%m %H:%M:%S")
-        print(f"{current_time} - Logged on as {self.user}")
+        print(f"{formatted_time} - Logged on as {self.user}")
 
     async def on_disconnect(self):
         current_time = datetime.now().time()
         formatted_time = current_time.strftime("%d/%m %H:%M:%S")
-        print(f"{current_time} - {self.user} disconnecting...")
+        print(f"{formatted_time} - {self.user} disconnecting...")
 
     async def on_close(self):
         current_time = datetime.now().time()
         formatted_time = current_time.strftime("%d/%m %H:%M:%S")
-        print(f"{current_time} - {self.user} shutting down...")
+        print(f"{formatted_time} - {self.user} shutting down...")
 
     async def on_message(self, message):
         if message.author != self.user:

@@ -30,6 +30,11 @@ class DonatorManagmentBot(discord.Client):
 
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
+        self.guild = self.get_guild(self.server_id)
+        role = self.guild.get_role(self.donation_role)
+        for m in self.guild.members:
+            if role not in m.roles and len([role for role in m.roles if role.id in self.valid_roles]) > 0:
+                await m.add_roles(role)
 
     async def on_member_update(self, before: discord.Member, after: discord.Member):
         """
