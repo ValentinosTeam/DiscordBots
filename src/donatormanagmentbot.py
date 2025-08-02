@@ -60,10 +60,10 @@ class DonatorManagmentBot(discord.Client):
         if has_valid_role and not has_role:
             await after.add_roles(role)
             await self.ping_channels(after.id)
-            await self.ping_admins(f" {after.name} is a donator!")
+            await self.ping_admins(f" {after.mention} is a donator!")
         if not has_valid_role and has_role:
             await after.remove_roles(role)
-            await self.ping_admins(f" {after.name} is no longer a donator!")
+            await self.ping_admins(f" {after.mention} is no longer a donator!")
 
     async def ping_admins(self, message: str):
         """
@@ -93,5 +93,5 @@ if "__main__" == __name__:
     import os
     from dotenv import load_dotenv
     load_dotenv()
-    bot = DonatorManagmentBot(657707606730735617, 1400436734801739838, [657707606730735621], [1400488808083886191], 1400430631137185822, [1400430974835097641, 1400475411863044166])
+    bot = DonatorManagmentBot(1321814400231018546, 1321814400516231196, [1321814400839057415, 1321814400839057414, 1321814400839057413], [1321814400293666835, 1321814400293666836], 1400533114215989403, [1321814400272961579, 1321814400272961580, 1321814400272961581, 1321814400272961582])
     bot.run(os.getenv("TEST_BOT_TOKEN"))
