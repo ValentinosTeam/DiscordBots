@@ -9,6 +9,7 @@ services:
     environment:
       - SCP_SL_EU_BOT_TOKEN=${SCP_SL_EU_BOT_TOKEN}
       - SCP_SL_EU_BOT_2_TOKEN=${SCP_SL_EU_BOT_2_TOKEN}
+      - SCP_SL_EU_BOT_3_TOKEN=${SCP_SL_EU_BOT_3_TOKEN}
       - TEST_BOT_TOKEN=${TEST_BOT_TOKEN}
     stdin_open: true
     tty: true
