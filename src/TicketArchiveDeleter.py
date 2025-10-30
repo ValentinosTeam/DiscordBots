@@ -42,7 +42,7 @@ class TicketCleaner(discord.Client):
                 delta = now - last_message.created_at
                 if delta.days > self.max_days_old:
                     pprint(f"Deleting {channel.name} (inactive for {delta.days} days)")
-                    #await channel.delete(reason="Ticket inactive too long")
+                    await channel.delete(reason="Ticket inactive too long")
 
     @cleanup_old_tickets.before_loop
     async def before_cleanup(self):

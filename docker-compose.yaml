@@ -7,6 +7,7 @@ services:
     volumes:
       - ./src:/app
     environment:
+      - TZ=Europe/Stockholm
       - SCP_SL_EU_BOT_TOKEN=${SCP_SL_EU_BOT_TOKEN}
       - SCP_SL_EU_BOT_2_TOKEN=${SCP_SL_EU_BOT_2_TOKEN}
       - SCP_SL_EU_BOT_3_TOKEN=${SCP_SL_EU_BOT_3_TOKEN}
