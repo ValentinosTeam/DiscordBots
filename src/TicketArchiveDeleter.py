@@ -15,11 +15,13 @@ class TicketCleaner(discord.Client):
         self.cleanup_old_tickets.start()
 
     async def on_ready(self):
-        print(f"Logged in as {self.user}")
+        pprint(f"Logged in as {self.user}")
+        await self.cleanup_old_tickets()  # run once immediately
+
 
     @tasks.loop(hours=24 * 7)  # runs once per week
     async def cleanup_old_tickets(self):
-        print("Starting cleanup...")
+        pprint("Starting cleanup...")
         now = datetime.datetime.now(datetime.timezone.utc)
 
         for guild in self.guilds:
@@ -39,10 +41,14 @@ class TicketCleaner(discord.Client):
 
                 delta = now - last_message.created_at
                 if delta.days > self.max_days_old:
-                    print(f"Deleting {channel.name} (inactive for {delta.days} days)")
+                    pprint(f"Deleting {channel.name} (inactive for {delta.days} days)")
                     #await channel.delete(reason="Ticket inactive too long")
 
     @cleanup_old_tickets.before_loop
     async def before_cleanup(self):
         await self.wait_until_ready()
-        print("Cleanup task waiting until bot is ready")
+        pprint("Cleanup task waiting until bot is ready")
+
+
+def pprint(*args, **kwargs):
+    print("[TicketCleaner] ", *args, **kwargs)
